@@ -72,7 +72,11 @@ export default class CreateExercises extends Component {
 
         axios.post('https://mern-exercise-tracker-lunari.herokuapp.com/exercises/add', exercise).then(res => console.log(res.data));
 
-        window.location = '/';
+        this.setState({
+            description: '',
+            duration: '0',
+            date: new Date()
+        });
     }
 
     render() {

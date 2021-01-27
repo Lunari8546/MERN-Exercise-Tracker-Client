@@ -28,7 +28,7 @@ export default class CreateUser extends Component {
 
         console.log(user);
 
-        axios.post('https://mern-exercise-tracker-lunari.herokuapp.com/users/add', user).then(res => console.log(res.data));
+        axios.post('https://mern-exercise-tracker-lunari.herokuapp.com/users/add/', user).then(res => console.log(res.data));
 
         this.setState({
             username: ''
