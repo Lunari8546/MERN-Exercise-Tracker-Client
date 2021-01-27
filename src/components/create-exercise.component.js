@@ -24,7 +24,7 @@ export default class CreateExercises extends Component {
     };
 
     componentDidMount() {
-        axios.get('http://localhost:5000/users/').then(response => {
+        axios.get('https://mern-exercise-tracker-lunari.herokuapp.com/users/').then(response => {
             if (response.data.length > 0) {
                 this.setState({
                     users: response.data.map(user => user.username),
@@ -70,7 +70,7 @@ export default class CreateExercises extends Component {
 
         console.log(exercise);
 
-        axios.post('http://localhost:5000/exercises/add', exercise).then(res => console.log(res.data));
+        axios.post('https://mern-exercise-tracker-lunari.herokuapp.com/exercises/add', exercise).then(res => console.log(res.data));
 
         window.location = '/';
     }
