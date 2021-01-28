@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import Swal from 'sweetalert2';
+
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -80,12 +82,36 @@ export default class EditExercises extends Component {
 
         console.log(exercise);
 
-        axios.post('https://mern-exercise-tracker-lunari.herokuapp.com/exercises/update/'+this.props.match.params.id, exercise).then(res => console.log(res.data));
+        axios.post('https://mern-exercise-tracker-lunari.herokuapp.com/exercises/update/'+this.props.match.params.id, exercise).then(() => {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top',
+                showConfirmButton: false,
+                timer: 1800,
+                timerProgressBar: true,
+                padding: '20px'
+            })
 
-        this.setState({
-            description: '',
-            duration: '0',
-            date: new Date()
+            Toast.fire({
+                icon: 'success',
+                title: 'Exercise updated!',
+                customClass: 'swal'
+            })
+        }).catch((error) => {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top',
+                showConfirmButton: false,
+                timer: 1800,
+                timerProgressBar: true,
+                padding: '20px'
+            })
+
+            Toast.fire({
+                icon: 'error',
+                title: error,
+                customClass: 'swal'
+            })
         });
     }
 

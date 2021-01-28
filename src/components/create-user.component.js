@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import Swal from 'sweetalert2';
+
 export default class CreateUser extends Component {
     constructor(props) {
         super(props);
@@ -28,7 +30,37 @@ export default class CreateUser extends Component {
 
         console.log(user);
 
-        axios.post('https://mern-exercise-tracker-lunari.herokuapp.com/users/add/', user).then(res => console.log(res.data));
+        axios.post('https://mern-exercise-tracker-lunari.herokuapp.com/users/add/', user).then(() => {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top',
+                showConfirmButton: false,
+                timer: 1800,
+                timerProgressBar: true,
+                padding: '20px'
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'User created!',
+                customClass: 'swal'
+            })
+        }).catch((error) => {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top',
+                showConfirmButton: false,
+                timer: 1800,
+                timerProgressBar: true,
+                padding: '20px'
+            })
+
+            Toast.fire({
+                icon: 'error',
+                title: error,
+                customClass: 'swal'
+            })
+        });
 
         this.setState({
             username: ''
@@ -43,7 +75,7 @@ export default class CreateUser extends Component {
                 </blockquote>
                 <form onSubmit={this.onSubmit}>
                     <fieldset>
-                        <label>Username</label>
+                        <label>Username (At least 3 characters)</label>
                         <input required type="text" placeholder="Unnamed User" value={this.state.username} onChange={this.onChangedUsername} />
                         <input className="button-primary" type="submit" value="Confirm"></input>
                     </fieldset>

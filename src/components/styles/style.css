@@ -41,4 +41,12 @@ table {
 a {
   cursor: pointer;
 }
+
+.swal {
+  font-size: 1.8rem !important;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
 /*# sourceMappingURL=style.css.map */
