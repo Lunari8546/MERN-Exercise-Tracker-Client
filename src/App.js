@@ -10,6 +10,7 @@ import ExerciseList from './components/exercise-list.component';
 import EditExercises from './components/edit-exercise.component';
 import CreateExercises from './components/create-exercise.component';
 import CreateUser from './components/create-user.component';
+import Copyright from './components/copyright.component';
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/edit/:id" exact component={EditExercises} />
             <Route path="/create" exact component={CreateExercises} />
             <Route path="/user" exact component={CreateUser} />
+            <Copyright />
         </Router>
     );
 }

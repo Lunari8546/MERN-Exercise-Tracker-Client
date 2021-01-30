@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+import Swal from 'sweetalert2';
+
 const Exercise = props => (
     <tr>
         <td>{props.exercise.username}</td>
@@ -9,7 +11,24 @@ const Exercise = props => (
         <td>{props.exercise.duration}</td>
         <td>{props.exercise.date.substring(0, 10)}</td>
         <td>
-            <Link to={"/edit/"+props.exercise._id}>Edit</Link> | <a onClick={() => { props.deleteExercise(props.exercise._id) }}>Delete</a>
+            <Link to={"/edit/"+props.exercise._id}>Edit</Link> | <a onClick={() => {
+                props.deleteExercise(props.exercise._id);
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top',
+                    showConfirmButton: false,
+                    timer: 1800,
+                    timerProgressBar: true,
+                    padding: '20px'
+                })
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Exercise deleted!',
+                    customClass: 'swal'
+                })
+            }}>Delete</a>
         </td>
     </tr>
 )

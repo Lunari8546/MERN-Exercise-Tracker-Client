@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 nav {
     height: 120px;
     line-height: 120px;
@@ -26,11 +31,13 @@ nav h3 {
 }
 
 section {
+    margin-top: 70px;
     width: 70%;
 }
 
 table {
     cursor: default;
+    margin-bottom: 200px;
 }
 
 a {
@@ -40,4 +47,26 @@ a {
 .swal {
     font-size: 1.8rem !important;
     user-select: none;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 2rem 0;
+    position: absolute;
+    bottom: 0;
+}
+
+::-webkit-scrollbar {
+    width: 15px
+}
+    
+::-webkit-scrollbar-track {
+    background: #808080;
+    border-radius: 0px
+}
+    
+::-webkit-scrollbar-thumb {
+    background: #9b4dca;
+    border-radius: 0px
 }
